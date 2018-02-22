@@ -1,0 +1,7 @@
+FROM golang:1.10.0-alpine
+RUN apk add --no-cache ca-certificates
+RUN set -ex \
+&& apk add --no-cache --virtual .build-deps \
+	wget curl git\
+&& go get -u gopkg.in/alecthomas/gometalinter.v2 \
+&& gometalinter.v2 --install
